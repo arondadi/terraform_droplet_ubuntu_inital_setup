@@ -1,4 +1,4 @@
-resource "digitalocean_droplet" "web" {
+resource "digitalocean_droplet" "staging_grounds" {
     image = "ubuntu-18-04-x64"
     name = var.server_name
     region = "FRA1"
@@ -20,6 +20,8 @@ resource "digitalocean_droplet" "web" {
     provisioner "remote-exec" {
         inline = [
             "adduser ${var.new_user}",
+            "\n", #Empty unix password
+            "\n",
             # Grant admin privileges
             "usermod -aG sudo ${var.new_user}",
             # Set up a basic firewall
