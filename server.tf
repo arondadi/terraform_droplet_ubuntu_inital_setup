@@ -20,8 +20,8 @@ resource "digitalocean_droplet" "staging_grounds" {
     provisioner "remote-exec" {
         inline = [
             "adduser ${var.new_user}",
-            "\n", #Empty unix password
-            "\n",
+            "12345", #Empty unix password
+            "12345",
             # Grant admin privileges
             "usermod -aG sudo ${var.new_user}",
             # Set up a basic firewall
