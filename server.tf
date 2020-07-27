@@ -1,12 +1,11 @@
-resource "digitalocean_droplet" "ubuntu_initial_setup" {
+resource "digitalocean_droplet" "web" {
     image = "ubuntu-18-04-x64"
-    name = "var.server_name"
+    name = var.server_name
     region = "FRA1"
     size = "s-1vcpu-1gb"
     private_networking = true
-    ssh_keys = [
-        "var.ssh_fingerprint"
-    ]
+    ssh_keys = [var.ssh_fingerprint]
+    
 
     # Connect to the provisioned droplet with ssh as root 
     connection  {
