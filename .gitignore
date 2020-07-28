@@ -1,6 +1,7 @@
   
 .vscode
 *.txt
+keys.sh
 
 # Local .terraform directories
 **/.terraform/*

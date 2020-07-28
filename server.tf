@@ -16,18 +16,4 @@ resource "digitalocean_droplet" "staging_grounds" {
         timeout = "2m"
     }
 
-    # Inital server setup. Setup a new user with sudo privileges
-    provisioner "remote-exec" {
-        inline = [
-            "adduser ${var.new_user}",
-            "12345", #Empty unix password
-            "12345",
-            # Grant admin privileges
-            "usermod -aG sudo ${var.new_user}",
-            # Set up a basic firewall
-            "ufw allow OpenSSH",
-            "ufw enable",
-            "rsync --archive --chown=${var.new_user}:${var.new_user} ~/.ssh /home/${var.new_user}"
-        ]
-    }
 }
